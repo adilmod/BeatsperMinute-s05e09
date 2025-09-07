@@ -50,3 +50,6 @@ musicTestRes <- predict(modelFit, new_data = musicTest) %>%
 
 musicTestMetrics <- metric_set(rmse, rsq, mae)
 musicTestMetrics(musicTestRes, truth = BeatsPerMinute, estimate = .pred)
+
+roc_data <- roc_curve(musicTestRes, truth = BeatsPerMinute, estimate = .pred)
+autoplot(roc_data)
